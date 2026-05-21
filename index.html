@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Click Challenge - Unit 10</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <div class="container">
+    <h1>⚡ Click Challenge</h1>
+    <p class="subtitle">Click the target as many times as you can before time runs out!</p>
+
+    <div class="stats">
+      <div class="stat-box">
+        <div class="stat-label">Score</div>
+        <div class="stat-value" id="scoreDisplay">0</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-label">Time Left</div>
+        <div class="stat-value" id="timerDisplay">10</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-label">High Score</div>
+        <div class="stat-value" id="highScoreDisplay">0</div>
+      </div>
+    </div>
+
+    <p id="message" class="message">Click Start to begin!</p>
+
+    <button id="targetBtn" class="target-btn" disabled>Click Me!</button>
+
+    <div class="controls">
+      <button id="startBtn" class="control-btn start-btn">Start Game</button>
+      <button id="resetBtn" class="control-btn reset-btn">Reset</button>
+    </div>
+  </div>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
