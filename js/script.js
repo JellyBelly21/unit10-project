@@ -29,7 +29,6 @@
    - Use functions for clean code
    ===================================================== */
 
-
 // =====================================================
 // STEP 1: State variables + DOM references
 // =====================================================
@@ -47,8 +46,21 @@
 //
 // Write your code here:
 
+// game state
+let score = 0;
+let highScore = 0;
+let gameOver = true;
+let timeLeft = 10;
+let timerId;
 
-
+// DOM references
+let startBtn = document.getElementById("startBtn");
+let targetBtn = document.getElementById("targetBtn");
+let resetBtn = document.getElementById("resetBtn");
+let highScoreDisplay = document.getElementById("highScoreDisplay");
+let message = document.getElementById("message");
+let timerDisplay = document.getElementById("timerDisplay");
+let scoreDisplay = document.getElementById("scoreDisplay");
 
 // =====================================================
 // STEP 2: Write the startGame function
