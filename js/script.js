@@ -113,9 +113,18 @@ startBtn.disabled = true;
 // }, 1000);
 //
 // Write your code here (still inside startGame):
-
-
-
+  timerId = setInterval(function() {
+    timeLeft = timeLeft - 1;
+    timerDisplay.textContent = timeLeft;
+    
+    if (timeLeft <= 3) {
+      timerDisplay.classList.add("urgent");
+    }
+    
+    if (timeLeft <= 0) {
+      endGame();
+    }
+  }, 1000);
 
 // =====================================================
 // STEP 4: Write the endGame function
@@ -148,6 +157,23 @@ startBtn.disabled = true;
 //
 // Write your endGame function here:
 
+function endGame() {
+gameOver = true;
+clearInterval(timerId);
+
+targetBtn.disabled = true;
+startBtn.disabled = false;
+timerDisplay.classList.remove("urgent");
+
+if (score > highScore) {
+   highScore = score;
+   highScoreDisplay.textContent = highScore;
+   message.textContent = `New high score! ${score} clicks!`;
+} else {
+   message.textContent = `Time's up! You got ${score} clicks.`;
+}
+message.className = "message win";
+};
 
 
 
