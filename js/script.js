@@ -175,8 +175,6 @@ if (score > highScore) {
 message.className = "message win";
 };
 
-
-
 // =====================================================
 // STEP 5: Wire up the click handlers
 // =====================================================
@@ -193,9 +191,32 @@ message.className = "message win";
 // });
 //
 // Write your three event listeners here:
+targetBtn.addEventListener("click", function() {
+if (gameOver) return;
+score = score + 1;
+scoreDisplay.textContent = score;
+});
 
+startBtn.addEventListener("click", startGame);
 
-
+resetBtn.addEventListener("click", function() {
+  if (timerId) clearInterval(timerId);
+  gameOver = true;
+  score = 0;
+  timeLeft = 10;
+  streakCount = 0;
+  lastClickTime = 0;
+  
+  scoreDisplay.textContent = score;
+  timerDisplay.textContent = timeLeft;
+  timerDisplay.classList.remove("urgent");
+  
+  message.textContent = "Click Start to begin!";
+  message.className = "message";
+  
+  targetBtn.disabled = true;
+  startBtn.disabled = false;
+});
 
 // =====================================================
 // BONUS CHALLENGES (Pick at least 1!)
