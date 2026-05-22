@@ -76,21 +76,34 @@ let scoreDisplay = document.getElementById("scoreDisplay");
 // Write your code here:
 
 function startGame() {
-   if (timerId)   {
+   if (timerId) {
       clearInterval(timerId);
    }
+
+   score = 0;
+   timeLeft = 10;
+   gameOver = false;
+
+   scoreDisplay.textContent = score;
+   timerDisplay.textContent = timeLeft;
+   message.textContent = "Go go go!";
+
+   targetBtn.disabled = false;
+   startBtn.disabled = true;
+
+   timerId = setInterval(function() {
+      timeLeft = timeLeft - 1;
+      timerDisplay.textContent = timeLeft;
+
+      if (timeLeft <= 3) {
+         timerDisplay.classList.add("urgent");
+      }
+
+      if (timeLeft <= 0) {
+         endGame();
+      }
+   }, 1000);
 }
-
-score = 0;
-timeLeft = 10;
-gamOver = 10;
-
-scoreDisplay.textContent = score;
-timerDisplay.textContent = timeLeft;
-message.textContent = "Go go go!";
-
-targetBtn.disabled = false;
-startBtn.disabled = true;
 
 // =====================================================
 // STEP 3: Write the countdown timer
@@ -199,13 +212,12 @@ scoreDisplay.textContent = score;
 
 startBtn.addEventListener("click", startGame);
 
+
 resetBtn.addEventListener("click", function() {
   if (timerId) clearInterval(timerId);
   gameOver = true;
   score = 0;
   timeLeft = 10;
-  streakCount = 0;
-  lastClickTime = 0;
   
   scoreDisplay.textContent = score;
   timerDisplay.textContent = timeLeft;
